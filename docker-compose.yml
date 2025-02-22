@@ -1,0 +1,15 @@
+services:
+  postgres_service:  # Burada pg-1 yerine postgres_service yazdık
+    image: postgres
+    container_name: "postgres_service"  # Konteyner adını da güncelledik
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: flight_management
+    volumes:
+      - pg1_data:/var/lib/postgresql/data
+
+volumes:
+  pg1_data:
