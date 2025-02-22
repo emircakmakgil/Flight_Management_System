@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-//  TODO:FLİGHTS EKLE
+
 @Getter
 @Setter
 public class CreateAirlineDto {

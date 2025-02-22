@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private final JwtService jwtService;
     private final RoleService roleService;
     private final UserBusinessRules userBusinessRules;
+
     public UserServiceImpl(UserRepository userRepository, JwtService jwtService, RoleService roleService, UserBusinessRules userBusinessRules) {
         this.userRepository = userRepository;
         this.userBusinessRules = userBusinessRules;
@@ -42,8 +43,9 @@ public class UserServiceImpl implements UserService {
         user.setLastName(createUserDto.getLastName());
         user.setPhoneNumber(createUserDto.getPhoneNumber());
         userRepository.save(user);
-
-
+   /* User user= userMapper.createUserFromCreateUserDto(createUserDto);
+    userRepository.save(user);
+*/
     }
 
     @Override
@@ -53,6 +55,7 @@ public class UserServiceImpl implements UserService {
         User user=optionalUser.get();
         user.setPassword(bCryptPasswordEncoder.encode(changeUserPasswordDto.getNewPassword()));
         user.setUpdatedAt(new Date(System.currentTimeMillis()));
+
         userRepository.save(user);
 
 

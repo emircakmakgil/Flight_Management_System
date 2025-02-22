@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
 //id | startDate | endDate | airline_id | airportS_id | airportE_id
@@ -37,6 +38,20 @@ public class Flight {
     @ManyToOne()
     @JoinColumn(name="arrival_airport_id")
     private ArrivalAirport arrivalAirport;
+
+
+    @OneToMany()
+    private Set<Ticket> tickets;
+
+    public Set<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(Set<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+
 
     public UUID getId() {
         return id;
