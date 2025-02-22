@@ -15,21 +15,25 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
+//TODO:AİRPORTLARI TEK BİR AİRPORTTA BİRLEŞTİR BİR HAVALİMANI İKSİNİ DE EKLENEBİLİR
+//TODO:BELİRLİ BİR FORMAT NASIL ATILIR JAVA DA
+//TODO:ABSTRACT CLASS OLARAK YAZ MAPPERLAR
+//TODO: ENTİTY İSİMLERİNİ CONTROLLER,REPO SERVİCE DE OLUR
 @Service
 public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
-    private final DepartureAirportService departureAirportService;
-    private final ArrivalAirportService arrivalAirportService;
+   // private final DepartureAirportService departureAirportService;
+    //private final ArrivalAirportService arrivalAirportService;
     private final AirlineService airlineService;
+    private final AirportService airportService;
 
 
-    public FlightServiceImpl(FlightRepository flightRepository, DepartureAirportService departureAirportService, ArrivalAirportService arrivalAirportService, AirlineService airlineService) {
+    public FlightServiceImpl(FlightRepository flightRepository,  AirlineService airlineService, AirportService airportService) {
         this.flightRepository = flightRepository;
 
-        this.departureAirportService = departureAirportService;
-        this.arrivalAirportService = arrivalAirportService;
+
         this.airlineService = airlineService;
+        this.airportService = airportService;
     }
 
     @Override
@@ -40,8 +44,8 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public void add(CreateFlightRequestDto createFlightRequestDto) {
         Airline airline=airlineService.findById(createFlightRequestDto.getAirlineId()).orElseThrow(()-> new RuntimeException("Airline Not Found"));
-        ArrivalAirport arrivalAirport=arrivalAirportService.findById(createFlightRequestDto.getArrivalAirportId()).orElseThrow(()-> new RuntimeException("Arrival Airport Not Found"));
-        DepartureAirport departureAirport=departureAirportService.findById(createFlightRequestDto.getDepartureAirportId()).orElseThrow(()-> new RuntimeException("Departure Airport Not Found"));
+        ArrivalAirport arrivalAirport=airportService.findByArrivalAirportId(createFlightRequestDto.getArrivalAirportId()).orElseThrow(()-> new RuntimeException("Arrival Airport Not Found"));
+        DepartureAirport departureAirport=airportService.findByDepartureAirportId(createFlightRequestDto.getDepartureAirportId()).orElseThrow(()-> new RuntimeException("Departure Airport Not Found"));
 
 
         Flight flight = new Flight();
@@ -70,8 +74,8 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Flight update(UpdateFlightRequestDto updateFlightRequestDto) {
         Airline airline=airlineService.findById(updateFlightRequestDto.getAirlineId()).orElseThrow(()-> new RuntimeException("Airline Not Found"));
-        ArrivalAirport arrivalAirport=arrivalAirportService.findById(updateFlightRequestDto.getArrivalAirportId()).orElseThrow(()-> new RuntimeException("Arrival Airport Not Found"));
-        DepartureAirport departureAirport=departureAirportService.findById(updateFlightRequestDto.getDepartureAirportId()).orElseThrow(()-> new RuntimeException("Departure Airport Not Found"));
+        ArrivalAirport arrivalAirport=airportService.findByArrivalAirportId(updateFlightRequestDto.getArrivalAirportId()).orElseThrow(()-> new RuntimeException("Arrival Airport Not Found"));
+        DepartureAirport departureAirport=airportService.findByDepartureAirportId(updateFlightRequestDto.getDepartureAirportId()).orElseThrow(()-> new RuntimeException("Departure Airport Not Found"));
        Flight flight1=flightRepository.findById(updateFlightRequestDto.getId()).orElse(null);
         flight1.setStartDate(updateFlightRequestDto.getStartDate());
         flight1.setEndDate(updateFlightRequestDto.getEndDate());
