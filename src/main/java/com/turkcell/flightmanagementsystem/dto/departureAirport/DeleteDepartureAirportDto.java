@@ -1,4 +1,4 @@
-package com.turkcell.flightmanagementsystem.dto.flightRequest;
+package com.turkcell.flightmanagementsystem.dto.departureAirport;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -8,7 +8,8 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class DeleteFlightRequestDto {
-    @NotNull()
+
+public class DeleteDepartureAirportDto {
+    @NotNull
     private UUID id;
 }

@@ -1,33 +1,34 @@
-package com.turkcell.flightmanagementsystem.service;
+package com.turkcell.flightmanagementsystem.service.impl;
 
-import com.turkcell.flightmanagementsystem.dto.flightRequest.CreateFlightRequestDto;
-import com.turkcell.flightmanagementsystem.dto.flightRequest.DeleteFlightRequestDto;
-import com.turkcell.flightmanagementsystem.dto.flightRequest.FlightRequestListiningDto;
-import com.turkcell.flightmanagementsystem.dto.flightRequest.UpdateFlightRequestDto;
+import com.turkcell.flightmanagementsystem.dto.flightrequest.CreateFlightRequestDto;
+import com.turkcell.flightmanagementsystem.dto.flightrequest.DeleteFlightRequestDto;
+import com.turkcell.flightmanagementsystem.dto.flightrequest.FlightRequestListiningDto;
+import com.turkcell.flightmanagementsystem.dto.flightrequest.UpdateFlightRequestDto;
 import com.turkcell.flightmanagementsystem.entity.Airline;
-import com.turkcell.flightmanagementsystem.entity.ArrivalAirport;
-import com.turkcell.flightmanagementsystem.entity.DepartureAirport;
+import com.turkcell.flightmanagementsystem.entity.airport.ArrivalAirport;
+import com.turkcell.flightmanagementsystem.entity.airport.DepartureAirport;
 import com.turkcell.flightmanagementsystem.entity.Flight;
 import com.turkcell.flightmanagementsystem.repository.FlightRepository;
+import com.turkcell.flightmanagementsystem.service.AirlineService;
+import com.turkcell.flightmanagementsystem.service.AirportService;
+import com.turkcell.flightmanagementsystem.service.FlightService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
-//TODO:AİRPORTLARI TEK BİR AİRPORTTA BİRLEŞTİR BİR HAVALİMANI İKSİNİ DE EKLENEBİLİR
 //TODO:BELİRLİ BİR FORMAT NASIL ATILIR JAVA DA
 //TODO:ABSTRACT CLASS OLARAK YAZ MAPPERLAR
 //TODO: ENTİTY İSİMLERİNİ CONTROLLER,REPO SERVİCE DE OLUR
 @Service
 public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
-   // private final DepartureAirportService departureAirportService;
-    //private final ArrivalAirportService arrivalAirportService;
     private final AirlineService airlineService;
     private final AirportService airportService;
 
-
+//buidwith
     public FlightServiceImpl(FlightRepository flightRepository,  AirlineService airlineService, AirportService airportService) {
         this.flightRepository = flightRepository;
 
@@ -41,13 +42,14 @@ public class FlightServiceImpl implements FlightService {
         return flightRepository.findById(id);
     }
 
+
     @Override
     public void add(CreateFlightRequestDto createFlightRequestDto) {
         Airline airline=airlineService.findById(createFlightRequestDto.getAirlineId()).orElseThrow(()-> new RuntimeException("Airline Not Found"));
         ArrivalAirport arrivalAirport=airportService.findByArrivalAirportId(createFlightRequestDto.getArrivalAirportId()).orElseThrow(()-> new RuntimeException("Arrival Airport Not Found"));
         DepartureAirport departureAirport=airportService.findByDepartureAirportId(createFlightRequestDto.getDepartureAirportId()).orElseThrow(()-> new RuntimeException("Departure Airport Not Found"));
 
-
+    //constructorı nesneyi oluştururken özelliklerini verebilirim
         Flight flight = new Flight();
         flight.setStartDate(createFlightRequestDto.getStartDate());
         flight.setEndDate(createFlightRequestDto.getEndDate());
@@ -69,21 +71,21 @@ public class FlightServiceImpl implements FlightService {
         return flightRequestListiningDtos;
     }
 
-
-
+    //mapping not null eklenebilir ona bak
+    //try-catch eklemeliyiz
     @Override
     public Flight update(UpdateFlightRequestDto updateFlightRequestDto) {
         Airline airline=airlineService.findById(updateFlightRequestDto.getAirlineId()).orElseThrow(()-> new RuntimeException("Airline Not Found"));
         ArrivalAirport arrivalAirport=airportService.findByArrivalAirportId(updateFlightRequestDto.getArrivalAirportId()).orElseThrow(()-> new RuntimeException("Arrival Airport Not Found"));
         DepartureAirport departureAirport=airportService.findByDepartureAirportId(updateFlightRequestDto.getDepartureAirportId()).orElseThrow(()-> new RuntimeException("Departure Airport Not Found"));
-       Flight flight1=flightRepository.findById(updateFlightRequestDto.getId()).orElse(null);
-        flight1.setStartDate(updateFlightRequestDto.getStartDate());
-        flight1.setEndDate(updateFlightRequestDto.getEndDate());
-        flight1.setAirline(airline);
-        flight1.setArrivalAirport(arrivalAirport);
-        flight1.setDepartureAirport(departureAirport);
+       Flight flight=flightRepository.findById(updateFlightRequestDto.getId()).orElse(null);
+        flight.setStartDate(updateFlightRequestDto.getStartDate());
+        flight.setEndDate(updateFlightRequestDto.getEndDate());
+        flight.setAirline(airline);
+        flight.setArrivalAirport(arrivalAirport);
+        flight.setDepartureAirport(departureAirport);
 
-        return flightRepository.save(flight1);
+        return flightRepository.save(flight);
     }
 
     @Override

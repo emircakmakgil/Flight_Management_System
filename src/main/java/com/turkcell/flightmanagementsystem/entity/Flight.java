@@ -1,5 +1,7 @@
 package com.turkcell.flightmanagementsystem.entity;
 
+import com.turkcell.flightmanagementsystem.entity.airport.ArrivalAirport;
+import com.turkcell.flightmanagementsystem.entity.airport.DepartureAirport;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,6 @@ import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
 
-//id | startDate | endDate | airline_id | airportS_id | airportE_id
 @Entity
 @Table(name="flights")
 

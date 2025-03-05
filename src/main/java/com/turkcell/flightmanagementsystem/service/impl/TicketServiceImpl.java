@@ -1,13 +1,15 @@
-package com.turkcell.flightmanagementsystem.service;
+package com.turkcell.flightmanagementsystem.service.impl;
 
 import com.turkcell.flightmanagementsystem.dto.ticket.*;
 import com.turkcell.flightmanagementsystem.entity.Campaign;
 import com.turkcell.flightmanagementsystem.entity.Flight;
 import com.turkcell.flightmanagementsystem.entity.Ticket;
 import com.turkcell.flightmanagementsystem.repository.TicketRepository;
+import com.turkcell.flightmanagementsystem.service.CampaignService;
+import com.turkcell.flightmanagementsystem.service.FlightService;
+import com.turkcell.flightmanagementsystem.service.TicketService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -86,6 +88,14 @@ public class TicketServiceImpl implements TicketService {
         double discount = originalPrice * (discountPercentage / 100);
         return originalPrice - discount;
     }
+    public List<TicketListiningDto> getDiscountedTickets() {
+        return ticketRepository.findByIsDiscountedTrue();
+    }
+
+    public List<TicketListiningDto> getTicketsByDiscountRate(double discountRate) {
+        return ticketRepository.findByDiscountRate(discountRate);
+    }
+
 }
 
 

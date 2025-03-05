@@ -1,9 +1,10 @@
-package com.turkcell.flightmanagementsystem.service;
+package com.turkcell.flightmanagementsystem.service.impl;
 
 import com.turkcell.flightmanagementsystem.dto.permission.CreatePermissionDto;
 import com.turkcell.flightmanagementsystem.dto.permission.ListPermissionDto;
 import com.turkcell.flightmanagementsystem.entity.Permission;
 import com.turkcell.flightmanagementsystem.repository.PermissionRepository;
+import com.turkcell.flightmanagementsystem.service.PermissionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

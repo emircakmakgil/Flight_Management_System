@@ -1,4 +1,4 @@
-package com.turkcell.flightmanagementsystem.service;
+package com.turkcell.flightmanagementsystem.service.impl;
 
 import com.turkcell.flightmanagementsystem.dto.passenger.CreatePassengerDto;
 import com.turkcell.flightmanagementsystem.dto.passenger.DeletePassengerDto;
@@ -6,9 +6,9 @@ import com.turkcell.flightmanagementsystem.dto.passenger.PassengerListiningDto;
 import com.turkcell.flightmanagementsystem.dto.passenger.UpdatePassengerDto;
 import com.turkcell.flightmanagementsystem.entity.Passenger;
 import com.turkcell.flightmanagementsystem.repository.PassengerRepository;
+import com.turkcell.flightmanagementsystem.service.PassengerService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

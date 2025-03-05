@@ -1,4 +1,4 @@
-package com.turkcell.flightmanagementsystem.dto.flightRequest;
+package com.turkcell.flightmanagementsystem.dto.flightrequest;
 
 
 import jakarta.validation.constraints.NotBlank;

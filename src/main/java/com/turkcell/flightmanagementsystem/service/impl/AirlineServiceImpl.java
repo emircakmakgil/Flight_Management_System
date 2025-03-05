@@ -1,12 +1,12 @@
-package com.turkcell.flightmanagementsystem.service;
+package com.turkcell.flightmanagementsystem.service.impl;
 
 import com.turkcell.flightmanagementsystem.dto.airline.AirlineListiningDto;
 import com.turkcell.flightmanagementsystem.dto.airline.CreateAirlineDto;
 import com.turkcell.flightmanagementsystem.dto.airline.DeleteAirlineDto;
 import com.turkcell.flightmanagementsystem.dto.airline.UpdateAirlineDto;
 import com.turkcell.flightmanagementsystem.entity.Airline;
-import com.turkcell.flightmanagementsystem.entity.Flight;
 import com.turkcell.flightmanagementsystem.repository.AirlineRepository;
+import com.turkcell.flightmanagementsystem.service.AirlineService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

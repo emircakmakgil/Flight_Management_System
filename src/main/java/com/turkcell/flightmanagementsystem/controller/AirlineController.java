@@ -4,14 +4,12 @@ import com.turkcell.flightmanagementsystem.dto.airline.AirlineListiningDto;
 import com.turkcell.flightmanagementsystem.dto.airline.CreateAirlineDto;
 import com.turkcell.flightmanagementsystem.dto.airline.DeleteAirlineDto;
 import com.turkcell.flightmanagementsystem.dto.airline.UpdateAirlineDto;
-import com.turkcell.flightmanagementsystem.entity.Airline;
 import com.turkcell.flightmanagementsystem.service.AirlineService;
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//buidwith parameters try-catch bloğu içerisine yazılabilir  !!sonar plugin incele!!!
 @RestController
 @RequestMapping("api/v1/airlines")
 public class AirlineController {

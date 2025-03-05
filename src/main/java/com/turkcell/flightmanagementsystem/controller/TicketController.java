@@ -46,4 +46,12 @@ public class TicketController {
         Ticket createdTicket = ticketService.createDiscountedTicket(createTicketDto);
         return createdTicket;
     }
+    @GetMapping("/discounted")
+    public List<TicketListiningDto> getDiscountedTickets() {
+        return ticketService.getDiscountedTickets();
+    }
+    @GetMapping("/discounted/{discountRate}")
+    public List<TicketListiningDto> getTicketsByDiscountRate(@PathVariable double discountRate) {
+        return ticketService.getTicketsByDiscountRate(discountRate);
+    }
 }
