@@ -16,6 +16,8 @@ public class TicketListiningDto {
     private double price;
 
     private Flight flight;
+    private boolean isDiscounted;  // Bu alanı ekleyin
+    private double discountRate;
 
     public TicketListiningDto(Flight flight, @NotBlank String seatNo, @NotNull double price) {
         this.seatNo = seatNo;

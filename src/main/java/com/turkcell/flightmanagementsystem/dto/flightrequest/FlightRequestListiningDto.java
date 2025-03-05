@@ -1,8 +1,8 @@
-package com.turkcell.flightmanagementsystem.dto.flightRequest;
+package com.turkcell.flightmanagementsystem.dto.flightrequest;
 
 import com.turkcell.flightmanagementsystem.entity.Airline;
-import com.turkcell.flightmanagementsystem.entity.ArrivalAirport;
-import com.turkcell.flightmanagementsystem.entity.DepartureAirport;
+import com.turkcell.flightmanagementsystem.entity.airport.ArrivalAirport;
+import com.turkcell.flightmanagementsystem.entity.airport.DepartureAirport;
 
 import java.time.LocalDate;
 import java.util.UUID;

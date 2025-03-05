@@ -1,4 +1,0 @@
-package com.turkcell.flightmanagementsystem.dto.FlightResponse;
-
-public class CreateFlightResponseDto {
-}

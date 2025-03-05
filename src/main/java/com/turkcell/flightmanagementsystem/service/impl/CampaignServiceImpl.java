@@ -1,4 +1,4 @@
-package com.turkcell.flightmanagementsystem.service;
+package com.turkcell.flightmanagementsystem.service.impl;
 
 import com.turkcell.flightmanagementsystem.core.exception.type.BusinessException;
 import com.turkcell.flightmanagementsystem.dto.campaign.CampaignListiningDto;
@@ -6,8 +6,8 @@ import com.turkcell.flightmanagementsystem.dto.campaign.CreateCampaignDto;
 import com.turkcell.flightmanagementsystem.dto.campaign.DeleteCampaignDto;
 import com.turkcell.flightmanagementsystem.dto.campaign.UpdateCampaignDto;
 import com.turkcell.flightmanagementsystem.entity.Campaign;
-import com.turkcell.flightmanagementsystem.entity.Flight;
 import com.turkcell.flightmanagementsystem.repository.CampaignRepository;
+import com.turkcell.flightmanagementsystem.service.CampaignService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

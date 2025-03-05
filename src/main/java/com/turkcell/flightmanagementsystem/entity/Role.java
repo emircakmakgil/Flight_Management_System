@@ -12,26 +12,22 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name="role")
+@Table(name = "role")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role {
-   @Id
-    @UuidGenerator
-    private UUID roleId;
-   private String name;
+        @Id
+        @UuidGenerator
+        private UUID roleId;
+        private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "roles_permissions",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    private Set<Permission> permissions;
+        @ManyToMany
+        @JoinTable(name = "roles_permissions", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
+        private Set<Permission> permissions;
 
-    @ManyToMany()
-    private Set<User> users;
-
+        @ManyToMany()
+        private Set<User> users;
 
 }

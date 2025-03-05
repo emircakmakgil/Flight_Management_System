@@ -1,9 +1,9 @@
 package com.turkcell.flightmanagementsystem.controller;
 
-import com.turkcell.flightmanagementsystem.dto.flightRequest.CreateFlightRequestDto;
-import com.turkcell.flightmanagementsystem.dto.flightRequest.DeleteFlightRequestDto;
-import com.turkcell.flightmanagementsystem.dto.flightRequest.FlightRequestListiningDto;
-import com.turkcell.flightmanagementsystem.dto.flightRequest.UpdateFlightRequestDto;
+import com.turkcell.flightmanagementsystem.dto.flightrequest.CreateFlightRequestDto;
+import com.turkcell.flightmanagementsystem.dto.flightrequest.DeleteFlightRequestDto;
+import com.turkcell.flightmanagementsystem.dto.flightrequest.FlightRequestListiningDto;
+import com.turkcell.flightmanagementsystem.dto.flightrequest.UpdateFlightRequestDto;
 import com.turkcell.flightmanagementsystem.service.FlightService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-//TODO:KAMPANYA EKLENEBİLİR EMPLOYEE EKLENEBİLİR RESMİ TATİLLERDE İNDİRİM YAPILABİLİR
 @RestController
 @RequestMapping("/api/v1/flights")
 public class FlightController {

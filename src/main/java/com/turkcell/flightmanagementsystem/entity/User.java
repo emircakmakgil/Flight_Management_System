@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 //TODO:ŞİFRE SIFIRLAMA SERVİCE EKLENEBİLİR TELEFONLADA GİREBİLSİN
@@ -43,6 +44,6 @@ public class User {
             name = "user_roles",
             joinColumns = @JoinColumn( name="user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
-    private Set<Role> roles;
+    private List<Role> roles;
 
 }

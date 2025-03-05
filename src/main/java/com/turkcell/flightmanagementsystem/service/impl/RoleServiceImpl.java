@@ -1,4 +1,4 @@
-package com.turkcell.flightmanagementsystem.service;
+package com.turkcell.flightmanagementsystem.service.impl;
 
 import com.turkcell.flightmanagementsystem.dto.role.CreateRoleDto;
 import com.turkcell.flightmanagementsystem.dto.role.ListRoleDto;
@@ -6,10 +6,12 @@ import com.turkcell.flightmanagementsystem.dto.role.UpdateRoleDto;
 import com.turkcell.flightmanagementsystem.entity.Permission;
 import com.turkcell.flightmanagementsystem.entity.Role;
 import com.turkcell.flightmanagementsystem.repository.RoleRepository;
+import com.turkcell.flightmanagementsystem.service.PermissionService;
+import com.turkcell.flightmanagementsystem.service.RoleService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -59,4 +61,12 @@ public class RoleServiceImpl implements RoleService {
 
         return roleRepository.findAllByNameIn(roleNames);
     }
+    public Optional<Role> findByName(String name) {
+        return roleRepository.findByName(name);
+    }
+
+
+
+
+
 }

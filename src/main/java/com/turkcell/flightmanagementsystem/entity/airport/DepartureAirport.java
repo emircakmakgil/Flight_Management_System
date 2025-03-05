@@ -1,15 +1,14 @@
-package com.turkcell.flightmanagementsystem.entity;
+package com.turkcell.flightmanagementsystem.entity.airport;
 
 
+import com.turkcell.flightmanagementsystem.entity.Flight;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Set;
-import java.util.UUID;
 
 //id | name | location
 @Entity
@@ -18,17 +17,8 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DepartureAirport {
+public class DepartureAirport extends Airport {
 
-    @Id
-    @UuidGenerator
-    private UUID id;
-
-    @Column(name="airport_name")
-    private String name;
-
-
-    private String location;
 
     @OneToMany(mappedBy = "departureAirport")
     private Set<Flight> flights;
