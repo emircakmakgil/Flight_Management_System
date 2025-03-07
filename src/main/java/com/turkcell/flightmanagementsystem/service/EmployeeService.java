@@ -1,10 +1,8 @@
 package com.turkcell.flightmanagementsystem.service;
 
 
-import com.turkcell.flightmanagementsystem.dto.employee.CreateEmployeeDto;
-import com.turkcell.flightmanagementsystem.dto.employee.DeleteEmployeeDto;
-import com.turkcell.flightmanagementsystem.dto.employee.EmployeeListiningDto;
-import com.turkcell.flightmanagementsystem.dto.employee.UpdateEmployeeDto;
+import com.turkcell.flightmanagementsystem.dto.employee.*;
+import com.turkcell.flightmanagementsystem.dto.user.ChangeUserPasswordDto;
 import com.turkcell.flightmanagementsystem.entity.Employee;
 
 import java.util.List;
@@ -17,4 +15,8 @@ public interface EmployeeService {
     List<EmployeeListiningDto> getAll();
     Employee update(UpdateEmployeeDto updateEmployeeDto);
     void delete(DeleteEmployeeDto deleteEmployeeDto);
+    String login(LoginEmployeeDto loginEmployeeDto);
+    void updatePassword(ChangeEmployeePasswordDto changeEmployeePasswordDto);
+
+
 }
