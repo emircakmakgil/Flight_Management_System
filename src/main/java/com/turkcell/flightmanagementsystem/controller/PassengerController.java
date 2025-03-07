@@ -1,9 +1,6 @@
 package com.turkcell.flightmanagementsystem.controller;
 
-import com.turkcell.flightmanagementsystem.dto.passenger.CreatePassengerDto;
-import com.turkcell.flightmanagementsystem.dto.passenger.DeletePassengerDto;
-import com.turkcell.flightmanagementsystem.dto.passenger.PassengerListiningDto;
-import com.turkcell.flightmanagementsystem.dto.passenger.UpdatePassengerDto;
+import com.turkcell.flightmanagementsystem.dto.passenger.*;
 import com.turkcell.flightmanagementsystem.service.PassengerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +34,13 @@ public class PassengerController {
     @DeleteMapping
     public void deletePassenger(@RequestBody DeletePassengerDto deletePassengerDto){
         this.passengerService.delete(deletePassengerDto);
+    }
+    @PostMapping("/login")
+    public String login(@RequestBody LoginPassengerDto loginPassengerDto) {
+        return passengerService.login(loginPassengerDto);
+    }
+    @PutMapping("/change-password")
+    public void update(@RequestBody ChangePassengerPasswordDto changePassengerPasswordDto) {
+        passengerService.updatePassword(changePassengerPasswordDto);
     }
 }

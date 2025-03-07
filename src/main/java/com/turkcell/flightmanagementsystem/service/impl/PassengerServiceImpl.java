@@ -1,15 +1,15 @@
 package com.turkcell.flightmanagementsystem.service.impl;
 
-import com.turkcell.flightmanagementsystem.dto.passenger.CreatePassengerDto;
-import com.turkcell.flightmanagementsystem.dto.passenger.DeletePassengerDto;
-import com.turkcell.flightmanagementsystem.dto.passenger.PassengerListiningDto;
-import com.turkcell.flightmanagementsystem.dto.passenger.UpdatePassengerDto;
+import com.turkcell.flightmanagementsystem.core.exception.jwt.JwtService;
+import com.turkcell.flightmanagementsystem.dto.passenger.*;
 import com.turkcell.flightmanagementsystem.entity.Passenger;
 import com.turkcell.flightmanagementsystem.repository.PassengerRepository;
+import com.turkcell.flightmanagementsystem.rules.PassengerBusinessRules;
 import com.turkcell.flightmanagementsystem.service.PassengerService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -18,11 +18,15 @@ import java.util.UUID;
 public class PassengerServiceImpl implements PassengerService {
     private final PassengerRepository passengerRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final JwtService jwtService;
+    private final PassengerBusinessRules passengerBusinessRules;
 
 
-    public PassengerServiceImpl(PassengerRepository passengerRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public PassengerServiceImpl(PassengerRepository passengerRepository, BCryptPasswordEncoder bCryptPasswordEncoder, JwtService jwtService, PassengerBusinessRules passengerBusinessRules) {
         this.passengerRepository = passengerRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.jwtService = jwtService;
+        this.passengerBusinessRules = passengerBusinessRules;
     }
 
     @Override
@@ -75,6 +79,25 @@ public class PassengerServiceImpl implements PassengerService {
 
     }
 
-    public static class EmployeeServiceImpl {
+    @Override
+    public String login(LoginPassengerDto loginPassengerDto) {
+        Optional<Passenger> optionalPassenger=passengerRepository.findByEmail(loginPassengerDto.getEmail());
+        passengerBusinessRules.ValidatePassenger(optionalPassenger,loginPassengerDto);
+        return jwtService.generateToken(loginPassengerDto.getEmail());
+
     }
+
+    @Override
+    public void updatePassword(ChangePassengerPasswordDto changePassengerPasswordDto) {
+        Optional<Passenger> optionalPassenger=passengerRepository.findByEmail(changePassengerPasswordDto.getEmail());
+        passengerBusinessRules.ValidatePassenger(optionalPassenger,changePassengerPasswordDto);
+        Passenger passenger=optionalPassenger.get();
+        passenger.setPassword(bCryptPasswordEncoder.encode(changePassengerPasswordDto.getNewPassword()));
+        passenger.setUpdatedAt(new Date(System.currentTimeMillis()));
+
+        passengerRepository.save(passenger);
+
+    }
+
+
 }
