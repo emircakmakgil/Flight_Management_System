@@ -24,11 +24,7 @@ public class TicketController {
     public void add(@RequestBody CreateTicketDto createTicketDto) {
         this.ticketService.add(createTicketDto);
     }
-  /*  @PostMapping("/capmaign")
-    @ResponseStatus(code= HttpStatus.CREATED)
-    public void calculateCampaignPrice(@RequestBody CampaignTicketDto campaignTicketDto) {
-        this.ticketService.calculateDiscountPrice(campaignTicketDto);
-    } */
+
     @GetMapping //SOR
     public List<TicketListiningDto> getAll(){
         return this.ticketService.getAll();
@@ -47,11 +43,11 @@ public class TicketController {
         return createdTicket;
     }
     @GetMapping("/discounted")
-    public List<TicketListiningDto> getDiscountedTickets() {
+    public List<DiscountedTicketListiningDto> getDiscountedTickets() {
         return ticketService.getDiscountedTickets();
     }
     @GetMapping("/discounted/{discountRate}")
-    public List<TicketListiningDto> getTicketsByDiscountRate(@PathVariable double discountRate) {
+    public List<DiscountedTicketListiningDto> getTicketsByDiscountRate(@PathVariable double discountRate) {
         return ticketService.getTicketsByDiscountRate(discountRate);
     }
 }

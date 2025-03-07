@@ -14,7 +14,7 @@ public interface TicketService {
     List<TicketListiningDto> getAll();
     Ticket createDiscountedTicket(CreateDiscountedTicketDto createDiscountedTicketDto);
 
-    List<TicketListiningDto> getTicketsByDiscountRate(double discountRate);
+    List<DiscountedTicketListiningDto> getTicketsByDiscountRate(double discountRate);
 
-    List<TicketListiningDto> getDiscountedTickets();
+    List<DiscountedTicketListiningDto> getDiscountedTickets();
 }
