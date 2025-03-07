@@ -74,4 +74,7 @@ public class PassengerServiceImpl implements PassengerService {
         passengerRepository.delete(passenger);
 
     }
+
+    public static class EmployeeServiceImpl {
+    }
 }
