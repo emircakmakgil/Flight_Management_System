@@ -3,7 +3,7 @@ package com.turkcell.flightmanagementsystem.controller;
 import com.turkcell.flightmanagementsystem.dto.employee.CreateEmployeeDto;
 import com.turkcell.flightmanagementsystem.dto.employee.DeleteEmployeeDto;
 import com.turkcell.flightmanagementsystem.dto.employee.EmployeeListiningDto;
-import com.turkcell.flightmanagementsystem.dto.employee.UpdateEmployeDto;
+import com.turkcell.flightmanagementsystem.dto.employee.UpdateEmployeeDto;
 import com.turkcell.flightmanagementsystem.service.EmployeeService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,7 @@ public class EmployeeController {
         this.employeeService.add(employeeDto);
     }
     @PutMapping
-    public void update(@RequestBody UpdateEmployeDto employeeDto) {
+    public void update(@RequestBody UpdateEmployeeDto employeeDto) {
         this.employeeService.update(employeeDto);
     }
     @DeleteMapping

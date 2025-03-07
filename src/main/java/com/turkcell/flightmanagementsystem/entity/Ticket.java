@@ -11,6 +11,7 @@ import org.hibernate.annotations.UuidGenerator;
 //TODO: TİCKET HİSTORY LOG (SELF REFERANCE USER TİCKET HAVAYOLU BAĞLANTILARI KAMPANYA KOLUNU EKLE)
 
 import java.util.UUID;
+
 @Getter
 @Setter
 @Entity
@@ -23,17 +24,18 @@ public class Ticket {
     private String seatNo;
     @NotNull
     private double price;
-    private boolean isDiscounted;  // Bu alanı ekleyin
+    private boolean isDiscounted;
+    @NotNull
+    @Column(name = "discount_rate")
     private double discountRate;
 
     @ManyToOne()
-    @JoinColumn(name="flight_id")
+    @JoinColumn(name = "flight_id")
     private Flight flight;
 
-    //kampanya ismi de verilebilir
+    // kampanya ismi de verilebilir
     @ManyToOne()
-    @JoinColumn(name="campaign_id")
+    @JoinColumn(name = "campaign_id")
     private Campaign campaign;
-
 
 }

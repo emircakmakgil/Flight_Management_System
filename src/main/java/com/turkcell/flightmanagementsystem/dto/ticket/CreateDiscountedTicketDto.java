@@ -17,6 +17,9 @@ public class CreateDiscountedTicketDto {
 
     private UUID flightId;
     private UUID campaignId;
+    private boolean isDiscounted;
+    private double discountPercentage;
+
 
 
 
