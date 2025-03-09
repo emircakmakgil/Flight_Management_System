@@ -71,51 +71,84 @@ cd flight-management-system
 
 | Metod | Endpoint | Açıklama |
 |-------|----------|-----------|
-| POST | `/api/auth/register` | Yeni kullanıcı kaydı |
-| POST | `/api/auth/login` | Kullanıcı girişi |
-| GET | `/api/auth/me` | Mevcut kullanıcı bilgilerini getirir |
+| GET | `/api/v1/users/all` | Tüm kullanıcıları listeler |
+| POST | `/api/v1/users` | Yeni kullanıcı kaydı |
+| PUT | `/api/v1/users/change-password` | Kullanıcı şifresini değiştirir |
+| POST | `/api/v1/users/login` | Kullanıcı girişi |
+
+### 👨‍💼 Çalışan API'leri
+
+| Metod | Endpoint | Açıklama |
+|-------|----------|-----------|
+| GET | `/api/v1/employees` | Tüm çalışanları listeler |
+| POST | `/api/v1/employees` | Yeni çalışan ekler |
+| PUT | `/api/v1/employees` | Çalışan bilgilerini günceller |
+| DELETE | `/api/v1/employees` | Çalışan siler |
+| POST | `/api/v1/employees/login` | Çalışan girişi |
+| PUT | `/api/v1/employees/change-password` | Çalışan şifresini değiştirir |
+### 👨‍👩‍👧‍👦 Yolcu API'leri
+
+| Metod | Endpoint | Açıklama |
+|-------|----------|-----------|
+| GET | `/api/v1/passengers` | Tüm yolcuları listeler |
+| POST | `/api/v1/passengers` | Yeni yolcu ekler |
+| PUT | `/api/v1/passengers` | Yolcu bilgilerini günceller |
+| DELETE | `/api/v1/passengers` | Yolcu siler |
+| POST | `/api/v1/passengers/login` | Yolcu girişi |
+| PUT | `/api/v1/passengers/change-password` | Yolcu şifresini değiştirir |
 
 ### ✈️ Uçuş API'leri
 
 | Metod | Endpoint | Açıklama |
 |-------|----------|-----------|
-| GET | `/api/flights` | Tüm uçuşları listeler |
-| GET | `/api/flights/{id}` | Belirli bir uçuşun detaylarını getirir |
-| POST | `/api/flights` | Yeni uçuş oluşturur (ADMIN) |
-| PUT | `/api/flights/{id}` | Uçuş bilgilerini günceller (ADMIN) |
-| DELETE | `/api/flights/{id}` | Uçuşu siler (ADMIN) |
-| GET | `/api/flights/search` | Uçuşları filtreler |
+| GET | `/api/v1/flights` | Tüm uçuşları listeler |
+| POST | `/api/v1/flights` | Yeni uçuş oluşturur |
+| PUT | `/api/v1/flights` | Uçuş bilgilerini günceller |
+| DELETE | `/api/v1/flights` | Uçuş siler |
+| GET | `/api/v1/flights/getFlightsByDate` | Belirli tarih aralığındaki uçuşları listeler |
 
 ### 🎫 Bilet API'leri
 
 | Metod | Endpoint | Açıklama |
 |-------|----------|-----------|
-| GET | `/api/tickets` | Kullanıcının biletlerini listeler |
-| GET | `/api/tickets/{id}` | Belirli bir biletin detaylarını getirir |
-| POST | `/api/tickets` | Yeni bilet oluşturur |
-| GET | `/api/tickets/discounted` | İndirimli biletleri listeler |
-| POST | `/api/tickets/discounted` | İndirimli bilet oluşturur |
-| DELETE | `/api/tickets/{id}` | Bileti iptal eder |
+| GET | `/api/v1/tickets` | Tüm biletleri listeler |
+| POST | `/api/v1/tickets` | Yeni bilet oluşturur |
+| PUT | `/api/v1/tickets` | Bilet bilgilerini günceller |
+| DELETE | `/api/v1/tickets` | Bilet siler |
+| GET | `/api/v1/tickets/discounted` | İndirimli biletleri listeler |
+| POST | `/api/v1/tickets/discounted` | İndirimli bilet oluşturur |
+| GET | `/api/v1/tickets/discounted/{discountRate}` | Belirli indirim oranına sahip biletleri listele
 
 ### 🏢 Havalimanı API'leri
 
 | Metod | Endpoint | Açıklama |
 |-------|----------|-----------|
-| GET | `/api/airports` | Tüm havalimanlarını listeler |
-| GET | `/api/airports/{id}` | Belirli bir havalimanının detaylarını getirir |
-| POST | `/api/airports` | Yeni havalimanı ekler (ADMIN) |
-| PUT | `/api/airports/{id}` | Havalimanı bilgilerini günceller (ADMIN) |
-| DELETE | `/api/airports/{id}` | Havalimanını siler (ADMIN) |
+| GET | `/api/v1/airports/arrivalAirport` | Tüm varış havalimanlarını listeler |
+| GET | `/api/v1/airports/departureAirport` | Tüm kalkış havalimanlarını listeler |
+| POST | `/api/v1/airports/arrivalAirport` | Yeni varış havalimanı ekler |
+| POST | `/api/v1/airports/departureAirport` | Yeni kalkış havalimanı ekler |
+| PUT | `/api/v1/airports/arrivalAirport` | Varış havalimanı bilgilerini günceller |
+| PUT | `/api/v1/airports/departureAirport` | Kalkış havalimanı bilgilerini günceller |
+| DELETE | `/api/v1/airports/arrivalAirport` | Varış havalimanı siler |
+| DELETE | `/api/v1/airports/departureAirport` | Kalkış havalimanı siler |
+
+### ✈️ Havayolu Şirketi API'leri
+
+| Metod | Endpoint | Açıklama |
+|-------|----------|-----------|
+| GET | `/api/v1/airlines` | Tüm havayolu şirketlerini listeler |
+| POST | `/api/v1/airlines` | Yeni havayolu şirketi ekler |
+| PUT | `/api/v1/airlines` | Havayolu şirketi bilgilerini günceller |
+| DELETE | `/api/v1/airlines` | Havayolu şirketi siler |
 
 ### 💰 Kampanya API'leri
 
 | Metod | Endpoint | Açıklama |
 |-------|----------|-----------|
-| GET | `/api/campaigns` | Tüm kampanyaları listeler |
-| GET | `/api/campaigns/{id}` | Belirli bir kampanyanın detaylarını getirir |
-| POST | `/api/campaigns` | Yeni kampanya oluşturur (ADMIN) |
-| PUT | `/api/campaigns/{id}` | Kampanya bilgilerini günceller (ADMIN) |
-| DELETE | `/api/campaigns/{id}` | Kampanyayı siler (ADMIN) |
+| GET | `/api/v1/campaigns` | Tüm kampanyaları listeler |
+| POST | `/api/v1/campaigns` | Yeni kampanya oluşturur |
+| PUT | `/api/v1/campaigns` | Kampanya bilgilerini günceller |
+| DELETE | `/api/v1/campaigns` | Kampanya siler |
 
 ## 🔐 Güvenlik
 
