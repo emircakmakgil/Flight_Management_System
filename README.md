@@ -137,9 +137,7 @@ cd flight-management-system
 docker-compose up -d
 ```
 
-## 📄 Lisans
 
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakınız.
 
 ## 👥 Geliştirici
 
