@@ -5,13 +5,10 @@ import com.turkcell.flightmanagementsystem.dto.flightrequest.DeleteFlightRequest
 import com.turkcell.flightmanagementsystem.dto.flightrequest.FlightRequestListiningDto;
 import com.turkcell.flightmanagementsystem.dto.flightrequest.UpdateFlightRequestDto;
 import com.turkcell.flightmanagementsystem.entity.Flight;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
-//TODO: SON 1 AY YURT İÇİ İNCELE ŞEHİR ÜLKE ZORUNLU OLMAYAN PARAMETRE VEREBİLİRİM
 public interface FlightService {
     Optional<Flight> findById(UUID id);
     void add(CreateFlightRequestDto createFlightRequestDto);

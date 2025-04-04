@@ -24,8 +24,4 @@ public class CreateAirlineDto {
     private String country;
 
 
-
-
-
-
 }

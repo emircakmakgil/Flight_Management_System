@@ -15,6 +15,7 @@ import java.util.UUID;
 
 @Service
 public class AirlineServiceImpl implements AirlineService {
+
     private final AirlineRepository airlineRepository;
 
     public AirlineServiceImpl(AirlineRepository airlineRepository) {
