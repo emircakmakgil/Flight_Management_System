@@ -13,7 +13,6 @@ import com.turkcell.flightmanagementsystem.entity.airport.DepartureAirport;
 import com.turkcell.flightmanagementsystem.repository.ArrivalAirportRepository;
 import com.turkcell.flightmanagementsystem.repository.DepartureAirportRepository;
 import com.turkcell.flightmanagementsystem.service.AirportService;
-import com.turkcell.flightmanagementsystem.service.FlightService;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -33,10 +32,8 @@ public class AirportServiceImpl implements AirportService {
     @Override
     public void addArrivalAirport(CreateArrivalAirportDto createArrivalAirportDto) {
         ArrivalAirport arrivalAirport = new ArrivalAirport();
-        //Set<Flight> flight = (Set<Flight>) flightService.findById(createArrivalAirportDto.getFlightIds()).orElseThrow(() -> new RuntimeException("Flight not found"));
         arrivalAirport.setName(createArrivalAirportDto.getName());
         arrivalAirport.setLocation(createArrivalAirportDto.getLocation());
-        //arrivalAirport.setFlights(flight);
         arrivalAirportRepository.save(arrivalAirport);
     }
 
@@ -45,7 +42,6 @@ public class AirportServiceImpl implements AirportService {
         DepartureAirport departureAirport = new DepartureAirport();
         departureAirport.setName(createDepartureAirportDto.getName());
         departureAirport.setLocation(createDepartureAirportDto.getLocation());
-        //departureAirport.setFlights(departureAirport.getFlights());
         departureAirportRepository.save(departureAirport);
 
     }

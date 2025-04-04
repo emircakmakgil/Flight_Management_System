@@ -31,10 +31,8 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public void add(CreateCampaignDto createCampaignDto) {
-       // Flight flight =flightService.findById(createCampaignDto.getFlightId()).orElseThrow(()->new BusinessException("Flight Not Found"));
         Campaign campaign = new Campaign();
         campaign.setName(createCampaignDto.getName());
-       // campaign.setFlight(flight);
         campaign.setDescription(createCampaignDto.getDescription());
         campaign.setStartDate(createCampaignDto.getStartDate());
         campaign.setEndDate(createCampaignDto.getEndDate());
@@ -44,13 +42,11 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public Campaign update(UpdateCampaignDto updateCampaignDto) {
-        //Flight flight=flightService.findById(updateCampaignDto.getFlight().getId()).orElseThrow(()->new BusinessException("Flight Not Found"));
         Campaign campaign=campaignRepository.findById(updateCampaignDto.getId()).orElseThrow(()->new BusinessException("Campaign Not Found"));
         campaign.setName(updateCampaignDto.getName());
         campaign.setDescription(updateCampaignDto.getDescription());
         campaign.setStartDate(updateCampaignDto.getStartDate());
         campaign.setEndDate(updateCampaignDto.getEndDate());
-       // campaign.setFlight(flight);
         campaign.setDiscountPercentage(updateCampaignDto.getDiscountPercentage());
 
         return campaignRepository.save(campaign);

@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 //TODO:BELİRLİ BİR FORMAT NASIL ATILIR JAVA DA
 //TODO:ABSTRACT CLASS OLARAK YAZ MAPPERLAR
@@ -31,8 +30,6 @@ public class FlightServiceImpl implements FlightService {
 //buidwith
     public FlightServiceImpl(FlightRepository flightRepository,  AirlineService airlineService, AirportService airportService) {
         this.flightRepository = flightRepository;
-
-
         this.airlineService = airlineService;
         this.airportService = airportService;
     }

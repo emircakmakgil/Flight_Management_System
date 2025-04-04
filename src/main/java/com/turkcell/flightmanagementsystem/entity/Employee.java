@@ -21,7 +21,6 @@ public class Employee {
     private String lastName;
     @Column(name="email", unique = true)
     private String email;
-
     private String password;
     @Column(name="phone_number")
     private String phoneNumber;
@@ -29,14 +28,10 @@ public class Employee {
     private Date createdAt;
     @Column(name="updated_at")
     private Date updatedAt;
-
-
     @Column(name = "department")
     private String department;
-
     @Column(name = "position")
     private String position;
-
     @Column(name = "salary")
     private Double salary;
 }

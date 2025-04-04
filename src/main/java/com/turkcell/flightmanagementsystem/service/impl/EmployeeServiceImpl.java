@@ -2,16 +2,12 @@ package com.turkcell.flightmanagementsystem.service.impl;
 
 import com.turkcell.flightmanagementsystem.core.exception.jwt.JwtService;
 import com.turkcell.flightmanagementsystem.dto.employee.*;
-import com.turkcell.flightmanagementsystem.dto.user.ChangeUserPasswordDto;
 import com.turkcell.flightmanagementsystem.entity.Employee;
-import com.turkcell.flightmanagementsystem.entity.User;
 import com.turkcell.flightmanagementsystem.repository.EmployeeRepository;
 import com.turkcell.flightmanagementsystem.rules.EmployeeBusinessRules;
 import com.turkcell.flightmanagementsystem.service.EmployeeService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +23,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeServiceImpl(EmployeeRepository employeeRepository, JwtService jwtService, BCryptPasswordEncoder bCryptPasswordEncoder, EmployeeBusinessRules employeeBusinessRules) {
         this.employeeRepository = employeeRepository;
         this.jwtService = jwtService;
-
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.employeeBusinessRules = employeeBusinessRules;
     }
@@ -36,7 +31,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Optional<Employee> findById(UUID id) {
         return employeeRepository.findById(id);
     }
-
 
       @Override
       public void add(CreateEmployeeDto createEmployeeDto) {
@@ -51,9 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
       employee.setSalary(createEmployeeDto.getSalary());
       employee.setCreatedAt(new Date(System.currentTimeMillis()));
       employeeRepository.save(employee);
-
       }
-
 
     @Override
     public List<EmployeeListiningDto> getAll() {
@@ -86,7 +78,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.findById(deleteEmployeeDto.getId())
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         employeeRepository.delete(employee);
-
     }
 
     @Override
@@ -96,8 +87,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         return jwtService.generateToken(loginEmployeeDto.getEmail());
     }
 
-
-
     @Override
     public void updatePassword(ChangeEmployeePasswordDto changeEmployeePasswordDto) {
         Optional<Employee> optionalEmployee=employeeRepository.findByEmail(changeEmployeePasswordDto.getEmail());
@@ -105,8 +94,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee=optionalEmployee.get();
         employee.setPassword(bCryptPasswordEncoder.encode(changeEmployeePasswordDto.getNewPassword()));
         employee.setUpdatedAt(new Date(System.currentTimeMillis()));
-
         employeeRepository.save(employee);
-
     }
 }

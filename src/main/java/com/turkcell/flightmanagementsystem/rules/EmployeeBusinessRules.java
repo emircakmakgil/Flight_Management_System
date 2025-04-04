@@ -23,13 +23,11 @@ public class EmployeeBusinessRules {
     }
     public void ValidateEmployee(Optional<Employee> employee, ChangeEmployeePasswordDto changeEmployeePasswordDto){
         employee.orElseThrow(() -> new BusinessException("Kullanıcı bulunamadı"));
-
         if(!bCryptPasswordEncoder.matches(changeEmployeePasswordDto.getOldPassword(), employee.get().getPassword()))
             throw new BusinessException("Eski şifre hatalı");
     }
     public void ValidateEmployee(Optional<Employee> employee, LoginEmployeeDto loginEmployeeDto){
         employee.orElseThrow(() -> new BusinessException("Kullanici bulunamadı"));
-
         if(!bCryptPasswordEncoder.matches(loginEmployeeDto.getPassword(), employee.get().getPassword()))
             throw new BusinessException("Şifre hatalı");
 
